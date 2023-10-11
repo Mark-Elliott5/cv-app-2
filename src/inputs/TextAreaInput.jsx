@@ -1,18 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import FieldDataContext from '../context/FieldDataContext';
 import PropTypes from 'prop-types';
 
-function TextAreaInput({ field }) {
+function TextAreaInput({ field, name }) {
   const [fieldData, updateFieldData] = useContext(FieldDataContext);
 
-  const handleInputChange = (name, value) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     updateFieldData(name, value);
     // or transmit data to preview window here for live cv preview?
   };
-
-  useEffect(() => {
-    console.log(fieldData);
-  });
 
   return (
     <div className="text-area-input">
@@ -23,7 +20,7 @@ function TextAreaInput({ field }) {
         rows="10"
         onChange={handleInputChange}
         id={field}
-        name={field}
+        name={name}
       ></textarea>
     </div>
   );
@@ -31,6 +28,7 @@ function TextAreaInput({ field }) {
 
 TextAreaInput.propTypes = {
   field: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default TextAreaInput;
