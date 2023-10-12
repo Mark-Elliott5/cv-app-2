@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 function FieldWrapper({ id, fieldName, children }) {
   return (
-    <form id={id} className="field-wrapper">
+    <div id={id} className="field-wrapper">
       <p>{fieldName}</p>
       {children}
-    </form>
+    </div>
   );
 }
 

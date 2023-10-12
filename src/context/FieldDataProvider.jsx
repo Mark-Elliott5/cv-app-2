@@ -17,9 +17,9 @@ function FieldDataProvider({ children }) {
     universityDegree1: '',
     universityStartDate1: '',
     universityEndDate1: '',
-    employer1: '',
-    employmentEndDate1: '',
-    employmentStartDate1: '',
+    jobEmployer1: '',
+    jobEndDate1: '',
+    jobStartDate1: '',
     jobTitle1: '',
     jobDescription1: '',
   });
@@ -28,12 +28,21 @@ function FieldDataProvider({ children }) {
     setFieldData({ ...fieldData, [key]: value });
   };
 
+  const deleteKeys = (keyNameArray, itemNumber) => {
+    const newData = { ...fieldData };
+    for (let i = 0; i < keyNameArray.length; i += 1) {
+      const keyToBeDeleted = `${keyNameArray[i]}${itemNumber}`;
+      delete newData[keyToBeDeleted];
+    }
+    setFieldData(newData);
+  };
+
   useEffect(() => {
     console.log(fieldData);
   });
 
   return (
-    <FieldDataContext.Provider value={[fieldData, updateFieldData]}>
+    <FieldDataContext.Provider value={[fieldData, updateFieldData, deleteKeys]}>
       {children}
     </FieldDataContext.Provider>
   );

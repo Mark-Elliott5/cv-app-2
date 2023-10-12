@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import FieldDataContext from '../context/FieldDataContext';
 
 function NormalInput({ type, field, name }) {
-  const [fieldData, updateFieldData] = useContext(FieldDataContext);
+  const context = useContext(FieldDataContext);
+  const updateFieldData = context[1];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
