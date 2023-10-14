@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import FieldDataContext from '../context/FieldDataContext';
 import PropTypes from 'prop-types';
 
-function RadioField({ value, name, checked }) {
+function RadioField({ objectKey, value, name, checked }) {
   const context = useContext(FieldDataContext);
   const updateFieldData = context[1];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    updateFieldData(name, value);
+    updateFieldData(objectKey, name, value);
     // or transmit data to preview window here for live cv preview?
   };
 
@@ -31,6 +31,7 @@ RadioField.propTypes = {
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool,
+  objectKey: PropTypes.string.isRequired,
 };
 
 export default RadioField;

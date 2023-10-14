@@ -79,28 +79,41 @@ function App() {
     },
   ];
 
+  const educationKey = 'education';
+  const careerKey = 'career';
+
   return (
     <FieldDataProvider>
       <div id="settings">
         <FieldWrapper id="layout" fieldName="Layout">
-          <RadioForm field={layout} />
+          <RadioForm field={layout} objectKey="settings" />
         </FieldWrapper>
         <FieldWrapper id="font" fieldName="Font">
-          <RadioForm field={fonts} />
+          <RadioForm field={fonts} objectKey="settings" />
         </FieldWrapper>
         <FieldWrapper id="color" fieldName="Color">
-          <RadioForm field={color} />
+          <RadioForm field={color} objectKey="settings" />
         </FieldWrapper>
       </div>
       <div id="details">
         <FieldWrapper id="general" fieldName="General">
-          {createInputForm(general)}
+          {createInputForm(general, 'general')}
         </FieldWrapper>
         <FieldWrapper id="education" fieldName="Education">
-          <MultiForm form={education} name="Education" />
+          <MultiForm
+            form={education}
+            name="Education"
+            objectKey={educationKey}
+            nestedKey="university"
+          />
         </FieldWrapper>
         <FieldWrapper id="career" fieldName="Career">
-          <MultiForm form={career} name="Job" />
+          <MultiForm
+            form={career}
+            name="Job"
+            objectKey={careerKey}
+            nestedKey="job"
+          />
         </FieldWrapper>
       </div>
       <div id="preview">

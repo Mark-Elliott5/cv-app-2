@@ -4,28 +4,42 @@ import PropTypes from 'prop-types';
 
 function FieldDataProvider({ children }) {
   const [fieldData, setFieldData] = useState({
-    font: 'Arial',
-    layout: 'Top',
-    color: 'Cornflower Blue',
-    email: '',
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    university1: '',
-    universityCity1: '',
-    universityState1: '',
-    universityDegree1: '',
-    universityStartDate1: '',
-    universityEndDate1: '',
-    jobEmployer1: '',
-    jobEndDate1: '',
-    jobStartDate1: '',
-    jobTitle1: '',
-    jobDescription1: '',
+    settings: {
+      font: 'Arial',
+      layout: 'Top',
+      color: 'Cornflower Blue',
+    },
+    general: {
+      email: '',
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+    },
+    education: {},
+    career: {},
   });
 
-  const updateFieldData = (key, value) => {
-    setFieldData({ ...fieldData, [key]: value });
+  const updateFieldData = (objectKey, key, value) => {
+    setFieldData({
+      ...fieldData,
+      [objectKey]: {
+        ...fieldData[objectKey],
+        [key]: value,
+      },
+    });
+  };
+
+  const updateFieldDataNestedObject = (objectKey, nestedKey, key, value) => {
+    setFieldData({
+      ...fieldData,
+      [objectKey]: {
+        ...fieldData[objectKey],
+        [nestedKey]: {
+          ...fieldData[objectKey][nestedKey],
+          [key]: value,
+        },
+      },
+    });
   };
 
   const deleteKeys = (keyNameArray, itemNumber) => {
@@ -42,7 +56,14 @@ function FieldDataProvider({ children }) {
   });
 
   return (
-    <FieldDataContext.Provider value={[fieldData, updateFieldData, deleteKeys]}>
+    <FieldDataContext.Provider
+      value={[
+        fieldData,
+        updateFieldData,
+        updateFieldDataNestedObject,
+        deleteKeys,
+      ]}
+    >
       {children}
     </FieldDataContext.Provider>
   );

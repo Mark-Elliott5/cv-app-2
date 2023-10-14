@@ -7,16 +7,24 @@ import PropTypes from 'prop-types';
 // to create/remove additional fields (while also removing their data from
 // context)
 
-function MultiForm({ form, name }) {
-  const [appendedDivs, setAppendedDivs] = useState([createInputForm(form, 1)]);
+function MultiForm({ form, objectKey, name, nestedKey }) {
+  const [appendedDivs, setAppendedDivs] = useState([
+    createInputForm(form, objectKey, 1, nestedKey),
+  ]);
 
   const context = useContext(FieldDataContext);
   // A component calling useContext will always re-render
   // when the context value changes
-  const deleteKeys = context[2];
+  const deleteKeys = context[3];
 
   const handleAppendClick = () => {
-    const newFormField = createInputForm(form, appendedDivs.length + 1);
+    const newNestedKey = `${nestedKey}${appendedDivs.length + 1}`;
+    const newFormField = createInputForm(
+      form,
+      objectKey,
+      appendedDivs.length + 1,
+      newNestedKey,
+    );
     setAppendedDivs([...appendedDivs, newFormField]);
   };
 
@@ -45,6 +53,8 @@ function MultiForm({ form, name }) {
 MultiForm.propTypes = {
   form: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
+  objectKey: PropTypes.string.isRequired,
+  nestedKey: PropTypes.string,
 };
 
 export default MultiForm;

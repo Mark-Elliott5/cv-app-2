@@ -2,13 +2,18 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FieldDataContext from '../context/FieldDataContext';
 
-function NormalInput({ type, field, name }) {
+function NormalInput({ objectKey, type, field, name, nestedKey }) {
   const context = useContext(FieldDataContext);
   const updateFieldData = context[1];
+  const updateFieldDataNestedObject = context[2];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    updateFieldData(name, value);
+    if (nestedKey) {
+      updateFieldDataNestedObject(objectKey, nestedKey, name, value);
+      return;
+    }
+    updateFieldData(objectKey, name, value);
     // or transmit data to preview window here for live cv preview?
   };
 
@@ -30,6 +35,8 @@ NormalInput.propTypes = {
   type: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  objectKey: PropTypes.string.isRequired,
+  nestedKey: PropTypes.string,
 };
 
 export default NormalInput;
