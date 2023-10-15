@@ -12,6 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* --georgia: Georgia;
+  --baskerville: Baskerville;
+  --arial: Arial;
+  --times: 'Times New Roman'; */
 }
 
 a {
@@ -36,6 +41,27 @@ h1 {
   line-height: 1.1;
 }
 
+#details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#preview {
+  background-color: white;
+  color: black;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -55,9 +81,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+button.remove-button {
+  text-align: right
+}
+
 #root {
   display: flex;
-  align-items: center;
   width: 100%;
   justify-content: space-evenly;
 }

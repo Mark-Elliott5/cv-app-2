@@ -4,6 +4,7 @@ import FieldWrapper from './FieldWrapper';
 import RadioForm from './forms/RadioForm';
 import createInputForm from './functions/createInputForm';
 import MultiForm from './forms/MultiForm';
+import Preview from './Preview';
 
 function App() {
   const layout = [
@@ -13,13 +14,12 @@ function App() {
   ];
 
   const fonts = [
-    { value: 'Baskerville', key: uuid(), name: 'font' },
-    { value: 'Bodoni', key: uuid(), name: 'font' },
-    { value: 'Caslon', key: uuid(), name: 'font' },
-    { value: 'Garamond', key: uuid(), name: 'font' },
-    { value: 'Georgia', key: uuid(), name: 'font' },
-    { value: 'Times New Roman', key: uuid(), name: 'font' },
     { value: 'Arial', key: uuid(), name: 'font', checked: true },
+    { value: 'Tahoma', key: uuid(), name: 'font' },
+    { value: 'Georgia', key: uuid(), name: 'font' },
+    { value: 'Helvetica', key: uuid(), name: 'font' },
+    { value: 'Times New Roman', key: uuid(), name: 'font' },
+    { value: 'Verdana', key: uuid(), name: 'font' },
   ];
 
   const color = [
@@ -33,8 +33,9 @@ function App() {
   const general = [
     { field: 'First Name', key: uuid(), name: 'firstName', type: 'text' },
     { field: 'Last Name', key: uuid(), name: 'lastName', type: 'text' },
-    { field: 'Phone Number', key: uuid(), name: 'phoneNumber', type: 'tel' },
     { field: 'Email', key: uuid(), name: 'email', type: 'email' },
+    { field: 'Phone Number', key: uuid(), name: 'phoneNumber', type: 'tel' },
+    { field: 'Location', key: uuid(), name: 'location', type: 'text' },
   ];
 
   const career = [
@@ -93,31 +94,28 @@ function App() {
         </FieldWrapper>
       </div>
       <div id="details">
-        <FieldWrapper id="general" fieldName="General">
+        <div id="general" className="field-wrapper">
+          <p>General</p>
           {createInputForm(general, 'general')}
-        </FieldWrapper>
-        <FieldWrapper id="education" fieldName="Education">
-          <MultiForm
-            form={education}
-            name="Education"
-            objectKey="education"
-            nestedKey="university"
-          />
-        </FieldWrapper>
-        <FieldWrapper id="career" fieldName="Career">
-          <MultiForm
-            form={career}
-            name="Job"
-            objectKey="career"
-            nestedKey="job"
-          />
-        </FieldWrapper>
+        </div>
+        <MultiForm
+          form={education}
+          name="Education"
+          objectKey="education"
+          nestedKey="university"
+          id="education"
+          fieldName="Education"
+        />
+        <MultiForm
+          form={career}
+          name="Job"
+          objectKey="career"
+          nestedKey="job"
+          id="career"
+          fieldName="Career"
+        />
       </div>
-      <div id="preview">
-        {/* component needs to use useEffect to monitor 
-        form data changes to 
-        then do setState on itself and rerender */}
-      </div>
+      <Preview />
     </FieldDataProvider>
   );
 }

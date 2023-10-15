@@ -4,16 +4,13 @@ import FieldDataContext from '../context/FieldDataContext';
 
 function NormalInput({ objectKey, type, field, name, nestedKey }) {
   const context = useContext(FieldDataContext);
-  const updateFieldData = context[1];
+  // const updateFieldData = context[1];
   const updateFieldDataNestedObject = context[2];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (nestedKey) {
-      updateFieldDataNestedObject(objectKey, nestedKey, name, value);
-      return;
-    }
-    updateFieldData(objectKey, name, value);
+    updateFieldDataNestedObject(objectKey, nestedKey, name, value);
+    // updateFieldData(objectKey, name, value);
     // or transmit data to preview window here for live cv preview?
   };
 

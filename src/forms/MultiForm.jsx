@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 // to create/remove additional fields (while also removing their data from
 // context)
 
-function MultiForm({ form, objectKey, name, nestedKey }) {
+function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
   const [appendedDivs, setAppendedDivs] = useState([
-    createInputForm(form, objectKey, 1, nestedKey),
+    createInputForm(form, objectKey, nestedKey),
   ]);
 
   const context = useContext(FieldDataContext);
@@ -19,12 +19,7 @@ function MultiForm({ form, objectKey, name, nestedKey }) {
 
   const handleAppendClick = () => {
     const newNestedKey = `${nestedKey}${appendedDivs.length + 1}`;
-    const newFormField = createInputForm(
-      form,
-      objectKey,
-      appendedDivs.length + 1,
-      newNestedKey,
-    );
+    const newFormField = createInputForm(form, objectKey, newNestedKey);
     setAppendedDivs([...appendedDivs, newFormField]);
   };
 
@@ -40,13 +35,18 @@ function MultiForm({ form, objectKey, name, nestedKey }) {
   };
 
   return (
-    <>
-      <button onClick={handleAppendClick}>Add {name}</button>
+    <div id={id} className="field-wrapper">
+      <div className="field-header">
+        <p>{fieldName}</p>
+        <button onClick={handleAppendClick}>Add {name}</button>
+      </div>
       {appendedDivs}
       {appendedDivs.length ? (
-        <button onClick={handleRemoveClick}>Remove {name}</button>
+        <button className="remove-button" onClick={handleRemoveClick}>
+          Remove {name}
+        </button>
       ) : null}
-    </>
+    </div>
   );
 }
 
@@ -55,6 +55,8 @@ MultiForm.propTypes = {
   name: PropTypes.string.isRequired,
   objectKey: PropTypes.string.isRequired,
   nestedKey: PropTypes.string,
+  fieldName: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default MultiForm;

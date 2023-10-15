@@ -1,13 +1,13 @@
 import NormalInput from '../inputs/NormalInput';
 import TextAreaInput from '../inputs/TextAreaInput';
 
-function createInputForm(arr, objectKey, itemNumber, nestedKey) {
+function createInputForm(arr, objectKey, nestedKey) {
   return arr.map((obj) =>
     obj.type === 'textarea' ? (
       <TextAreaInput
         objectKey={objectKey}
         key={obj.key}
-        name={itemNumber ? `${obj.name}${itemNumber}` : obj.name}
+        name={obj.name}
         field={obj.field}
         nestedKey={nestedKey}
       />
@@ -15,7 +15,7 @@ function createInputForm(arr, objectKey, itemNumber, nestedKey) {
       <NormalInput
         objectKey={objectKey}
         key={obj.key}
-        name={itemNumber ? `${obj.name}${itemNumber}` : obj.name}
+        name={obj.name}
         field={obj.field}
         type={obj.type}
         nestedKey={nestedKey}
