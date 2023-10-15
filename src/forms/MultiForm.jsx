@@ -32,8 +32,8 @@ function MultiForm({ form, objectKey, name, nestedKey }) {
     if (appendedDivs.length === 1) {
       return;
     }
-    const keysToBeDeleted = form.map((field) => field.name);
-    deleteKeys(keysToBeDeleted, appendedDivs.length);
+    const keyToDelete = `${nestedKey}${appendedDivs.length}`;
+    deleteKeys(keyToDelete, objectKey);
     const updatedDivs = [...appendedDivs];
     updatedDivs.splice(updatedDivs.length - 1, 1);
     setAppendedDivs(updatedDivs);

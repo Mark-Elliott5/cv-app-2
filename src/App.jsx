@@ -61,7 +61,7 @@ function App() {
   ];
 
   const education = [
-    { field: 'University', name: 'university', key: uuid(), type: 'text' },
+    { field: 'University', name: 'universityName', key: uuid(), type: 'text' },
     { field: 'City', name: 'universityCity', key: uuid(), type: 'text' },
     { field: 'State', name: 'universityState', key: uuid(), type: 'text' },
     { field: 'Degree', name: 'universityDegree', key: uuid(), type: 'text' },
@@ -78,9 +78,6 @@ function App() {
       type: 'date',
     },
   ];
-
-  const educationKey = 'education';
-  const careerKey = 'career';
 
   return (
     <FieldDataProvider>
@@ -103,7 +100,7 @@ function App() {
           <MultiForm
             form={education}
             name="Education"
-            objectKey={educationKey}
+            objectKey="education"
             nestedKey="university"
           />
         </FieldWrapper>
@@ -111,7 +108,7 @@ function App() {
           <MultiForm
             form={career}
             name="Job"
-            objectKey={careerKey}
+            objectKey="career"
             nestedKey="job"
           />
         </FieldWrapper>

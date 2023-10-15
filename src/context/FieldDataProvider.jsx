@@ -42,12 +42,9 @@ function FieldDataProvider({ children }) {
     });
   };
 
-  const deleteKeys = (keyNameArray, itemNumber) => {
+  const deleteKeys = (keyName, category) => {
     const newData = { ...fieldData };
-    for (let i = 0; i < keyNameArray.length; i += 1) {
-      const keyToBeDeleted = `${keyNameArray[i]}${itemNumber}`;
-      delete newData[keyToBeDeleted];
-    }
+    delete newData[category][keyName];
     setFieldData(newData);
   };
 
