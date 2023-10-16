@@ -14,9 +14,9 @@ function App() {
   ];
 
   const fonts = [
-    { value: 'Arial', key: uuid(), name: 'font', checked: true },
+    { value: 'Arial', key: uuid(), name: 'font' },
     { value: 'Tahoma', key: uuid(), name: 'font' },
-    { value: 'Georgia', key: uuid(), name: 'font' },
+    { value: 'Georgia', key: uuid(), name: 'font', checked: true },
     { value: 'Helvetica', key: uuid(), name: 'font' },
     { value: 'Times New Roman', key: uuid(), name: 'font' },
     { value: 'Verdana', key: uuid(), name: 'font' },
@@ -63,8 +63,12 @@ function App() {
 
   const education = [
     { field: 'University', name: 'universityName', key: uuid(), type: 'text' },
-    { field: 'City', name: 'universityCity', key: uuid(), type: 'text' },
-    { field: 'State', name: 'universityState', key: uuid(), type: 'text' },
+    {
+      field: 'Location',
+      name: 'universityLocation',
+      key: uuid(),
+      type: 'text',
+    },
     { field: 'Degree', name: 'universityDegree', key: uuid(), type: 'text' },
     {
       field: 'Start Year',
@@ -95,7 +99,7 @@ function App() {
       </div>
       <div id="details">
         <div id="general" className="field-wrapper">
-          <p>General</p>
+          <p className="input-header">General</p>
           {createInputForm(general, 'general')}
         </div>
         <MultiForm

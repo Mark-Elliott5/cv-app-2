@@ -14,7 +14,9 @@ function RadioField({ objectKey, value, name, checked }) {
 
   return (
     <div className="text-area-input">
-      <label htmlFor={value}>{value}</label>
+      <label className="input-label" htmlFor={value}>
+        {value}
+      </label>
       <input
         type="radio"
         onChange={handleInputChange}

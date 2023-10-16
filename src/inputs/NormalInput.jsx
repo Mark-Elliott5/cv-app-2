@@ -4,19 +4,24 @@ import FieldDataContext from '../context/FieldDataContext';
 
 function NormalInput({ objectKey, type, field, name, nestedKey }) {
   const context = useContext(FieldDataContext);
-  // const updateFieldData = context[1];
+  const updateFieldData = context[1];
   const updateFieldDataNestedObject = context[2];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    updateFieldDataNestedObject(objectKey, nestedKey, name, value);
-    // updateFieldData(objectKey, name, value);
+    if (nestedKey) {
+      updateFieldDataNestedObject(objectKey, nestedKey, name, value);
+      return;
+    }
+    updateFieldData(objectKey, name, value);
     // or transmit data to preview window here for live cv preview?
   };
 
   return (
     <div className="input-wrapper">
-      <label htmlFor={field}>{field}</label>
+      <label className="input-label" htmlFor={field}>
+        {field}
+      </label>
       <input
         type={type}
         className={`input-field-${type}`}

@@ -19,6 +19,13 @@
   --times: 'Times New Roman'; */
 }
 
+#root {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -29,11 +36,9 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
+  scrollbar-width: none;
 }
 
 h1 {
@@ -45,6 +50,24 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  height: 100vh;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.input-header {
+  font-weight: bold;
+  /* font-style: italic; */
+}
+
+.input-label {
+  font-weight: 300;
+  /* font-style: italic; */
 }
 
 .input-wrapper {
@@ -60,6 +83,30 @@ h1 {
 #preview {
   background-color: white;
   color: black;
+  display: flex;
+  flex-direction: column;
+  width: 57.96vh;
+  height: 75vh;
+  padding: 3.41vh;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+#preview p {
+  margin: 0;
+}
+
+#general-details {
+  border-bottom: 1px solid black;
+}
+
+#general-header {
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+#general-contact {
+  font-size: 2vh;
 }
 
 button {
@@ -83,12 +130,6 @@ button:focus-visible {
 
 button.remove-button {
   text-align: right
-}
-
-#root {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
 }
 
 @media (prefers-color-scheme: light) {

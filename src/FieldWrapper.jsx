@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function FieldWrapper({ id, fieldName, children }) {
   return (
     <div id={id} className="field-wrapper">
-      <p>{fieldName}</p>
+      <p className="input-header">{fieldName}</p>
       {children}
     </div>
   );

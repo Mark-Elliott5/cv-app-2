@@ -37,7 +37,7 @@ function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
   return (
     <div id={id} className="field-wrapper">
       <div className="field-header">
-        <p>{fieldName}</p>
+        <p className="input-header">{fieldName}</p>
         <button onClick={handleAppendClick}>Add {name}</button>
       </div>
       {appendedDivs}

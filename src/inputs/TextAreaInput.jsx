@@ -14,7 +14,9 @@ function TextAreaInput({ objectKey, field, name, nestedKey }) {
 
   return (
     <div className="input-wrapper">
-      <label htmlFor={field}>{field}</label>
+      <label className="input-label" htmlFor={field}>
+        {field}
+      </label>
       <textarea
         placeholder="Describe your responsibilities and experience here..."
         cols="45"
