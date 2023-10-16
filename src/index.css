@@ -176,12 +176,23 @@ footer {
   margin-bottom: 32px;
   margin-top: 32px;
   font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 .github-link {
   width: 1rem;
   margin-left: 5px;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display: grid;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
