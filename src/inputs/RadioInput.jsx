@@ -20,7 +20,7 @@ function RadioField({ objectKey, value, name, checked }) {
       <input
         type="radio"
         onChange={handleInputChange}
-        id={`${value}-font`}
+        id={value}
         name={name}
         value={value}
         defaultChecked={checked}
