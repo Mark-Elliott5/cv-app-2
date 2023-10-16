@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
   const [appendedDivs, setAppendedDivs] = useState([
-    createInputForm(form, objectKey, nestedKey),
+    createInputForm(form, objectKey, nestedKey, nestedKey, 1),
   ]);
 
   const context = useContext(FieldDataContext);
@@ -19,7 +19,13 @@ function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
 
   const handleAppendClick = () => {
     const newNestedKey = `${nestedKey}${appendedDivs.length + 1}`;
-    const newFormField = createInputForm(form, objectKey, newNestedKey);
+    const newFormField = createInputForm(
+      form,
+      objectKey,
+      newNestedKey,
+      nestedKey,
+      appendedDivs.length + 1,
+    );
     setAppendedDivs([...appendedDivs, newFormField]);
   };
 

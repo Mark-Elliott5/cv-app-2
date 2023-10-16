@@ -64,6 +64,7 @@ h1 {
 .input-header {
   font-weight: bold;
   /* font-style: italic; */
+  margin-bottom: 0;
 }
 
 .input-label {
@@ -99,6 +100,7 @@ h1 {
 
 #preview p {
   margin: 0;
+  width: 100%;
 }
 
 #general-details {
@@ -106,16 +108,16 @@ h1 {
 }
 
 #general-header {
-  font-size: 3vh;
+  font-size: 2.75vh;
   font-weight: bold;
 }
 
 #general-contact {
-  font-size: 2vh;
+  font-size: 1.85vh;
 }
 
 .sub-header {
-  font-size: 1.80vh;
+  font-size: 1.75vh;
   font-weight: bold;
   border-bottom: 0.5px solid black;
 }
@@ -123,7 +125,7 @@ h1 {
 .split-detail {
   display: flex;
   justify-content: space-between;
-  font-size: 1.75vh;
+  font-size: 1.55vh;
 }
 
 .job-description {

@@ -1,90 +1,105 @@
-import { v4 as uuid } from 'uuid';
 import FieldDataProvider from './context/FieldDataProvider';
 import FieldWrapper from './FieldWrapper';
 import RadioForm from './forms/RadioForm';
 import createInputForm from './functions/createInputForm';
 import MultiForm from './forms/MultiForm';
 import Preview from './Preview';
+import html2pdf from 'html2pdf.js';
 
 function App() {
-  const layout = [
-    { value: 'Top', key: uuid(), name: 'layout', checked: true },
-    { value: 'Left', key: uuid(), name: 'layout' },
-    { value: 'Right', key: uuid(), name: 'layout' },
-  ];
+  // const layout = [
+  //   { value: 'Top', name: 'layout', checked: true },
+  //   { value: 'Left', name: 'layout' },
+  //   { value: 'Right', name: 'layout' },
+  // ];
 
   const fonts = [
-    { value: 'Arial', key: uuid(), name: 'font' },
-    { value: 'Tahoma', key: uuid(), name: 'font' },
-    { value: 'Georgia', key: uuid(), name: 'font', checked: true },
-    { value: 'Helvetica', key: uuid(), name: 'font' },
-    { value: 'Times New Roman', key: uuid(), name: 'font' },
-    { value: 'Verdana', key: uuid(), name: 'font' },
+    { value: 'Arial', name: 'font' },
+    { value: 'Tahoma', name: 'font' },
+    { value: 'Georgia', name: 'font', checked: true },
+    { value: 'Helvetica', name: 'font' },
+    { value: 'Times New Roman', name: 'font' },
+    { value: 'Verdana', name: 'font' },
   ];
 
-  const color = [
-    { value: 'Cornflower Blue', key: uuid(), name: 'color', checked: true },
-    { value: 'Grey', key: uuid(), name: 'color' },
-    { value: 'Navy', key: uuid(), name: 'color' },
-    { value: 'Brown', key: uuid(), name: 'color' },
-    { value: 'Pink', key: uuid(), name: 'color' },
-  ];
+  // const color = [
+  //   { value: 'Cornflower Blue', name: 'color', checked: true },
+  //   { value: 'Grey', name: 'color' },
+  //   { value: 'Navy', name: 'color' },
+  //   { value: 'Brown', name: 'color' },
+  //   { value: 'Pink', name: 'color' },
+  // ];
 
   const general = [
-    { field: 'First Name', key: uuid(), name: 'firstName', type: 'text' },
-    { field: 'Last Name', key: uuid(), name: 'lastName', type: 'text' },
-    { field: 'Email', key: uuid(), name: 'email', type: 'email' },
-    { field: 'Phone Number', key: uuid(), name: 'phoneNumber', type: 'tel' },
-    { field: 'Location', key: uuid(), name: 'location', type: 'text' },
+    { field: 'First Name', name: 'firstName', type: 'text' },
+    { field: 'Last Name', name: 'lastName', type: 'text' },
+    { field: 'Email', name: 'email', type: 'email' },
+    { field: 'Phone Number', name: 'phoneNumber', type: 'tel' },
+    { field: 'Location', name: 'location', type: 'text' },
   ];
 
   const career = [
-    { field: 'Employer', key: uuid(), name: 'jobEmployer', type: 'text' },
-    { field: 'Title', key: uuid(), name: 'jobTitle', type: 'text' },
+    { field: 'Employer', name: 'jobEmployer', type: 'text' },
+    { field: 'Title', name: 'jobTitle', type: 'text' },
     {
       field: 'Employment Start Date',
       name: 'jobStartDate',
-      key: uuid(),
       type: 'date',
     },
     {
       field: 'Employment End Date',
       name: 'jobEndDate',
-      key: uuid(),
       type: 'date',
     },
-    { field: 'Location', key: uuid(), name: 'jobLocation', type: 'text' },
+    { field: 'Location', name: 'jobLocation', type: 'text' },
     {
       field: 'Description',
-      key: uuid(),
       name: 'jobDescription',
       type: 'textarea',
     },
   ];
 
   const education = [
-    { field: 'University', name: 'universityName', key: uuid(), type: 'text' },
+    { field: 'University', name: 'universityName', type: 'text' },
 
-    { field: 'Degree', name: 'universityDegree', key: uuid(), type: 'text' },
+    { field: 'Degree', name: 'universityDegree', type: 'text' },
     {
       field: 'Start Year',
       name: 'universityStartDate',
-      key: uuid(),
       type: 'date',
     },
     {
       field: 'End Year',
       name: 'universityEndDate',
-      key: uuid(),
       type: 'date',
     },
     {
       field: 'Location',
       name: 'universityLocation',
-      key: uuid(),
       type: 'text',
     },
   ];
+
+  const handlePDF = () => {
+    const element = document.getElementById('preview');
+    // newElement.style = 'width: 8.5in; height: 11in';
+    const opt = {
+      margin: 0,
+      filename: 'myfile.pdf',
+      image: { type: 'jpeg', quality: 1 },
+      html2canvas: {
+        scale: 12,
+        letterRendering: true,
+        useCORS: true,
+      },
+      jsPDF: {
+        unit: 'px',
+        format: [element.offsetWidth, element.offsetHeight],
+        orientation: 'portrait',
+      },
+    };
+    html2pdf().from(element).set(opt).outputPdf('dataurlnewwindow');
+  };
 
   return (
     <FieldDataProvider>
@@ -98,6 +113,9 @@ function App() {
         {/* <FieldWrapper id="color" fieldName="Color">
           <RadioForm field={color} objectKey="settings" />
         </FieldWrapper> */}
+        <button id="pdf-button" onClick={handlePDF}>
+          Save as PDF
+        </button>
       </div>
       <div id="details">
         <div id="general" className="field-wrapper">
