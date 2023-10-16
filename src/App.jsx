@@ -39,8 +39,9 @@ function App() {
   ];
 
   const career = [
-    { field: 'Employer', key: uuid(), name: 'jobEmployer', type: 'text' },
     { field: 'Title', key: uuid(), name: 'jobTitle', type: 'text' },
+    { field: 'Employer', key: uuid(), name: 'jobEmployer', type: 'text' },
+    { field: 'Location', key: uuid(), name: 'jobLocation', type: 'text' },
     {
       field: 'Employment Start Date',
       name: 'jobStartDate',
@@ -53,7 +54,6 @@ function App() {
       key: uuid(),
       type: 'date',
     },
-    { field: 'Location', key: uuid(), name: 'jobLocation', type: 'text' },
     {
       field: 'Description',
       key: uuid(),
@@ -64,7 +64,12 @@ function App() {
 
   const education = [
     { field: 'University', name: 'universityName', key: uuid(), type: 'text' },
-
+    {
+      field: 'Location',
+      name: 'universityLocation',
+      key: uuid(),
+      type: 'text',
+    },
     { field: 'Degree', name: 'universityDegree', key: uuid(), type: 'text' },
     {
       field: 'Start Year',
@@ -78,26 +83,20 @@ function App() {
       key: uuid(),
       type: 'date',
     },
-    {
-      field: 'Location',
-      name: 'universityLocation',
-      key: uuid(),
-      type: 'text',
-    },
   ];
 
   return (
     <FieldDataProvider>
       <div id="settings">
-        {/* <FieldWrapper id="layout" fieldName="Layout">
+        <FieldWrapper id="layout" fieldName="Layout">
           <RadioForm field={layout} objectKey="settings" />
-        </FieldWrapper> */}
+        </FieldWrapper>
         <FieldWrapper id="font" fieldName="Font">
           <RadioForm field={fonts} objectKey="settings" />
         </FieldWrapper>
-        {/* <FieldWrapper id="color" fieldName="Color">
+        <FieldWrapper id="color" fieldName="Color">
           <RadioForm field={color} objectKey="settings" />
-        </FieldWrapper> */}
+        </FieldWrapper>
       </div>
       <div id="details">
         <div id="general" className="field-wrapper">

@@ -77,9 +77,7 @@ function Preview() {
             <p className="split-left">{jobTitle}</p>
             <p className="split-right">{jobLocation}</p>
           </div>
-          <p className="job-description italic">
-            &nbsp;&nbsp;&nbsp;&nbsp;-{jobDescription}
-          </p>
+          <p className="job-description italic">-{jobDescription}</p>
         </div>
       ),
     );
