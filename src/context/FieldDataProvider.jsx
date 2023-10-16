@@ -33,6 +33,7 @@ function FieldDataProvider({ children }) {
         jobEndDate: '2011-08-24',
         jobStartDate: '1997-07-01',
         jobTitle: 'Chairman/CEO',
+        jobLocation: 'Cupertino, California',
         jobDescription: 'Managed the day-to-day operations of Apple, Inc.',
         uuidKey: uuid(),
       },

@@ -41,6 +41,7 @@ function App() {
   const career = [
     { field: 'Title', key: uuid(), name: 'jobTitle', type: 'text' },
     { field: 'Employer', key: uuid(), name: 'jobEmployer', type: 'text' },
+    { field: 'Location', key: uuid(), name: 'jobLocation', type: 'text' },
     {
       field: 'Employment Start Date',
       name: 'jobStartDate',

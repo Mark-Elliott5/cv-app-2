@@ -105,9 +105,30 @@ h1 {
   font-weight: bold;
 }
 
-#general-contact {
+#general-contact, .sub-header {
   font-size: 2vh;
 }
+
+.sub-header {
+  font-weight: bold;
+  border-bottom: 0.5px solid black;
+}
+
+.split-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.75vh;
+}
+
+.job-description {
+  font-size: 1.70vh;
+}
+
+.italic {
+  font-style: italic;
+}
+
+
 
 button {
   border-radius: 8px;

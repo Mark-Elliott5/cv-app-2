@@ -33,18 +33,51 @@ function Preview() {
         universityDegree,
         uuidKey,
       }) => (
-        <div key={uuidKey} className="education-box">
-          <div className="education-split-detail">
-            <p className="education-name">{universityName}</p>
-            <p className="education-date">
+        <div key={uuidKey} className="preview-box">
+          <div className="split-detail">
+            <p className="split-left">{universityName}</p>
+            <p className="split-right">
               {convertDateFormat(universityStartDate)} -{' '}
               {convertDateFormat(universityEndDate)}
             </p>
           </div>
-          <div className="education-split-detail">
-            <p className="education-degree">{universityDegree}</p>
-            <p className="education-location">{universityLocation}</p>
+          <div className="split-detail italic">
+            <p className="split-left">{universityDegree}</p>
+            <p className="split-right">{universityLocation}</p>
           </div>
+        </div>
+      ),
+    );
+  };
+
+  const generateCareer = () => {
+    const fields = Object.keys(fieldData.career).map(
+      (key) => fieldData.career[key],
+    );
+
+    return fields.map(
+      ({
+        jobTitle,
+        jobEmployer,
+        jobLocation,
+        jobStartDate,
+        jobEndDate,
+        jobDescription,
+        uuidKey,
+      }) => (
+        <div key={uuidKey} className="preview-box">
+          <div className="split-detail">
+            <p className="split-left">{jobEmployer}</p>
+            <p className="split-right">
+              {convertDateFormat(jobStartDate)} -{' '}
+              {convertDateFormat(jobEndDate)}
+            </p>
+          </div>
+          <div className="split-detail italic">
+            <p className="split-left">{jobTitle}</p>
+            <p className="split-right">{jobLocation}</p>
+          </div>
+          <p className="job-description italic">-{jobDescription}</p>
         </div>
       ),
     );
@@ -59,8 +92,14 @@ function Preview() {
           ${location}`}
         </p>
       </div>
-      <div id="education-details">{generateEducation()}</div>
-      <div id="career-details"></div>
+      <div id="education-details">
+        <p className="sub-header">Education</p>
+        {generateEducation()}
+      </div>
+      <div id="career-details">
+        <p className="sub-header">Career</p>
+        {generateCareer()}
+      </div>
     </div>
   );
 }
