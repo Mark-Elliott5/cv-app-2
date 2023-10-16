@@ -102,45 +102,55 @@ function App() {
   };
 
   return (
-    <FieldDataProvider>
-      <div id="settings">
-        {/* <FieldWrapper id="layout" fieldName="Layout">
+    <>
+      <div id="app">
+        <FieldDataProvider>
+          <div id="settings">
+            {/* <FieldWrapper id="layout" fieldName="Layout">
           <RadioForm field={layout} objectKey="settings" />
         </FieldWrapper> */}
-        <FieldWrapper id="font" fieldName="Font">
-          <RadioForm field={fonts} objectKey="settings" />
-        </FieldWrapper>
-        {/* <FieldWrapper id="color" fieldName="Color">
+            <FieldWrapper id="font" fieldName="Font">
+              <RadioForm field={fonts} objectKey="settings" />
+            </FieldWrapper>
+            {/* <FieldWrapper id="color" fieldName="Color">
           <RadioForm field={color} objectKey="settings" />
         </FieldWrapper> */}
-        <button id="pdf-button" onClick={handlePDF}>
-          Save as PDF
-        </button>
+            <button id="pdf-button" onClick={handlePDF}>
+              Save as PDF
+            </button>
+          </div>
+          <div id="details">
+            <div id="general" className="field-wrapper">
+              <p className="input-header">General</p>
+              {createInputForm(general, 'general')}
+            </div>
+            <MultiForm
+              form={education}
+              name="Education"
+              objectKey="education"
+              nestedKey="university"
+              id="education"
+              fieldName="Education"
+            />
+            <MultiForm
+              form={career}
+              name="Job"
+              objectKey="career"
+              nestedKey="job"
+              id="career"
+              fieldName="Career"
+            />
+          </div>
+          <Preview />
+        </FieldDataProvider>
       </div>
-      <div id="details">
-        <div id="general" className="field-wrapper">
-          <p className="input-header">General</p>
-          {createInputForm(general, 'general')}
-        </div>
-        <MultiForm
-          form={education}
-          name="Education"
-          objectKey="education"
-          nestedKey="university"
-          id="education"
-          fieldName="Education"
-        />
-        <MultiForm
-          form={career}
-          name="Job"
-          objectKey="career"
-          nestedKey="job"
-          id="career"
-          fieldName="Career"
-        />
-      </div>
-      <Preview />
-    </FieldDataProvider>
+      <footer>
+        Designed by Mark Elliott{' '}
+        <a href="https://github.com/Mark-Elliott5">
+          <img className="github-link" src="src/assets/github-mark-white.png" />
+        </a>
+      </footer>
+    </>
   );
 }
 
