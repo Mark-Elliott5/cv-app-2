@@ -5,6 +5,7 @@ import createInputForm from './functions/createInputForm';
 import MultiForm from './forms/MultiForm';
 import Preview from './Preview';
 import html2pdf from 'html2pdf.js';
+import githubMark from './assets/github-mark-white.png';
 
 function App() {
   const fonts = [
@@ -132,7 +133,7 @@ function App() {
       <footer>
         Designed by Mark Elliott{' '}
         <a href="https://github.com/Mark-Elliott5">
-          <img className="github-link" src="src/assets/github-mark-white.png" />
+          <img className="github-link" src={githubMark} />
         </a>
       </footer>
     </>

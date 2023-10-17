@@ -42,7 +42,7 @@ h1 {
 }
 
 #settings, #details {
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
