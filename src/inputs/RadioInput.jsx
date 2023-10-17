@@ -9,11 +9,10 @@ function RadioField({ objectKey, value, name, checked }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     updateFieldData(objectKey, name, value);
-    // or transmit data to preview window here for live cv preview?
   };
 
   return (
-    <div className="text-area-input">
+    <div className="radio-input">
       <label className="input-label" htmlFor={value}>
         {value}
       </label>

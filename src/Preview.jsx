@@ -31,20 +31,22 @@ function Preview() {
         universityStartDate,
         universityEndDate,
         universityDegree,
+        universityDescription,
         uuidKey,
       }) => (
         <div key={uuidKey} className="preview-box">
           <div className="split-detail">
-            <p className="split-left">{universityName}</p>
-            <p className="split-right">
+            <p className="split-left bold">{universityName}</p>
+            <p className="split-right bold">
               {convertDateFormat(universityStartDate)} -{' '}
               {convertDateFormat(universityEndDate)}
             </p>
           </div>
-          <div className="split-detail italic">
-            <p className="split-left">{universityDegree}</p>
-            <p className="split-right">{universityLocation}</p>
+          <div className="split-detail">
+            <p className="split-left italic">{universityDegree}</p>
+            <p className="split-right italic">{universityLocation}</p>
           </div>
+          <p className="job-description">{universityDescription}</p>
         </div>
       ),
     );
@@ -67,19 +69,17 @@ function Preview() {
       }) => (
         <div key={uuidKey} className="preview-box">
           <div className="split-detail">
-            <p className="split-left">{jobEmployer}</p>
-            <p className="split-right">
+            <p className="split-left bold">{jobEmployer}</p>
+            <p className="split-right bold">
               {convertDateFormat(jobStartDate)} -{' '}
               {convertDateFormat(jobEndDate)}
             </p>
           </div>
-          <div className="split-detail italic">
-            <p className="split-left">{jobTitle}</p>
-            <p className="split-right">{jobLocation}</p>
+          <div className="split-detail">
+            <p className="split-left italic">{jobTitle}</p>
+            <p className="split-right italic">{jobLocation}</p>
           </div>
-          <p className="job-description italic">
-            &nbsp;&nbsp;&nbsp;&nbsp;-{jobDescription}
-          </p>
+          <p className="job-description">{jobDescription}</p>
         </div>
       ),
     );
@@ -88,7 +88,7 @@ function Preview() {
   return (
     <div id="preview" style={{ fontFamily: fieldData.settings.font }}>
       <div id="general-details">
-        <p id="general-header">{`${firstName} ${lastName}`}</p>
+        <p id="general-header" className="bold">{`${firstName} ${lastName}`}</p>
         <p id="general-contact">
           {`${email} • ${phoneNumber} • 
           ${location}`}

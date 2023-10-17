@@ -7,12 +7,6 @@ import Preview from './Preview';
 import html2pdf from 'html2pdf.js';
 
 function App() {
-  // const layout = [
-  //   { value: 'Top', name: 'layout', checked: true },
-  //   { value: 'Left', name: 'layout' },
-  //   { value: 'Right', name: 'layout' },
-  // ];
-
   const fonts = [
     { value: 'Arial', name: 'font' },
     { value: 'Tahoma', name: 'font' },
@@ -21,14 +15,6 @@ function App() {
     { value: 'Times New Roman', name: 'font' },
     { value: 'Verdana', name: 'font' },
   ];
-
-  // const color = [
-  //   { value: 'Cornflower Blue', name: 'color', checked: true },
-  //   { value: 'Grey', name: 'color' },
-  //   { value: 'Navy', name: 'color' },
-  //   { value: 'Brown', name: 'color' },
-  //   { value: 'Pink', name: 'color' },
-  // ];
 
   const general = [
     { field: 'First Name', name: 'firstName', type: 'text' },
@@ -53,7 +39,7 @@ function App() {
     },
     { field: 'Location', name: 'jobLocation', type: 'text' },
     {
-      field: 'Description',
+      field: 'Job Description',
       name: 'jobDescription',
       type: 'textarea',
     },
@@ -78,11 +64,15 @@ function App() {
       name: 'universityLocation',
       type: 'text',
     },
+    {
+      field: 'Description',
+      name: 'universityDescription',
+      type: 'textarea',
+    },
   ];
 
   const handlePDF = () => {
     const element = document.getElementById('preview');
-    // newElement.style = 'width: 8.5in; height: 11in';
     const opt = {
       margin: 0,
       filename: 'myfile.pdf',
@@ -98,26 +88,21 @@ function App() {
         orientation: 'portrait',
       },
     };
-    html2pdf().from(element).set(opt).outputPdf('dataurlnewwindow');
+    html2pdf(element, opt);
   };
 
   return (
     <>
+      <header>Resumé App</header>
       <div id="app">
         <FieldDataProvider>
           <div id="settings">
-            {/* <FieldWrapper id="layout" fieldName="Layout">
-          <RadioForm field={layout} objectKey="settings" />
-        </FieldWrapper> */}
             <FieldWrapper id="font" fieldName="Font">
               <RadioForm field={fonts} objectKey="settings" />
+              <button id="pdf-button" onClick={handlePDF}>
+                Save as PDF
+              </button>
             </FieldWrapper>
-            {/* <FieldWrapper id="color" fieldName="Color">
-          <RadioForm field={color} objectKey="settings" />
-        </FieldWrapper> */}
-            <button id="pdf-button" onClick={handlePDF}>
-              Save as PDF
-            </button>
           </div>
           <div id="details">
             <div id="general" className="field-wrapper">

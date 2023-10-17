@@ -13,8 +13,6 @@ function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
   ]);
 
   const context = useContext(FieldDataContext);
-  // A component calling useContext will always re-render
-  // when the context value changes
   const deleteKeys = context[3];
 
   const handleAppendClick = () => {

@@ -5,12 +5,13 @@ import { v4 as uuid } from 'uuid';
 // This component is a means to create a radio form from an array prop
 
 function RadioForm({ field, objectKey }) {
+  const fieldWithKeys = field.map((obj) => ({ ...obj, key: uuid() }));
   return (
     <>
-      {field.map((obj) => (
+      {fieldWithKeys.map((obj) => (
         <RadioField
           objectKey={objectKey}
-          key={uuid()}
+          key={obj.key}
           value={obj.value}
           name={obj.name}
           checked={obj.checked}

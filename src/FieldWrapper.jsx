@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import './styles/FormWrapper.scss';
 
 function FieldWrapper({ id, fieldName, children }) {
   return (

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FieldDataContext from '../context/FieldDataContext';
 
-function NormalInput({ objectKey, type, field, name, nestedKey }) {
+function NormalInput({ objectKey, type, field, name, nestedKey, increment }) {
   const context = useContext(FieldDataContext);
   const updateFieldData = context[1];
   const updateFieldDataNestedObject = context[2];
@@ -14,12 +14,11 @@ function NormalInput({ objectKey, type, field, name, nestedKey }) {
       return;
     }
     updateFieldData(objectKey, name, value);
-    // or transmit data to preview window here for live cv preview?
   };
 
   return (
     <div className="input-wrapper">
-      <label className="input-label" htmlFor={field}>
+      <label className="input-label" htmlFor={`${name}${increment}`}>
         {field}
       </label>
       <input
@@ -27,7 +26,7 @@ function NormalInput({ objectKey, type, field, name, nestedKey }) {
         className={`input-field-${type}`}
         onChange={handleInputChange}
         name={name}
-        id={field}
+        id={`${name}${increment}`}
       />
     </div>
   );
@@ -39,6 +38,7 @@ NormalInput.propTypes = {
   name: PropTypes.string.isRequired,
   objectKey: PropTypes.string.isRequired,
   nestedKey: PropTypes.string,
+  increment: PropTypes.number,
 };
 
 export default NormalInput;
