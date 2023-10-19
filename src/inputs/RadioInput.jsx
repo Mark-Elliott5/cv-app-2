@@ -3,8 +3,7 @@ import FieldDataContext from '../context/FieldDataContext';
 import PropTypes from 'prop-types';
 
 function RadioField({ objectKey, value, name, checked }) {
-  const context = useContext(FieldDataContext);
-  const updateFieldData = context[1];
+  const { updateFieldData } = useContext(FieldDataContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

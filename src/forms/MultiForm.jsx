@@ -12,8 +12,7 @@ function MultiForm({ form, objectKey, name, nestedKey, id, fieldName }) {
     createInputForm(form, objectKey, nestedKey, nestedKey, 1),
   ]);
 
-  const context = useContext(FieldDataContext);
-  const deleteKeys = context[3];
+  const { deleteKeys } = useContext(FieldDataContext);
 
   const handleAppendClick = () => {
     const newNestedKey = `${nestedKey}${appendedDivs.length + 1}`;

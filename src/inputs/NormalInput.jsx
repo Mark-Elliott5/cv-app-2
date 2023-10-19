@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import FieldDataContext from '../context/FieldDataContext';
 
 function NormalInput({ objectKey, type, field, name, nestedKey, increment }) {
-  const context = useContext(FieldDataContext);
-  const updateFieldData = context[1];
-  const updateFieldDataNestedObject = context[2];
+  const { updateFieldData, updateFieldDataNestedObject } =
+    useContext(FieldDataContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

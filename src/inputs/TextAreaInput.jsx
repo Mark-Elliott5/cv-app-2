@@ -3,8 +3,7 @@ import FieldDataContext from '../context/FieldDataContext';
 import PropTypes from 'prop-types';
 
 function TextAreaInput({ objectKey, field, name, nestedKey, increment }) {
-  const context = useContext(FieldDataContext);
-  const updateFieldDataNestedObject = context[2];
+  const { updateFieldDataNestedObject } = useContext(FieldDataContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

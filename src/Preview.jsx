@@ -2,8 +2,8 @@ import FieldDataContext from './context/FieldDataContext';
 import { useContext } from 'react';
 
 function Preview() {
-  const context = useContext(FieldDataContext);
-  const fieldData = context[0];
+  const { fieldData } = useContext(FieldDataContext);
+  // const fieldData = context[0];
   const { firstName, lastName, email, phoneNumber, location } =
     fieldData.general;
 

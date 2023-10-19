@@ -85,12 +85,12 @@ function FieldDataProvider({ children }) {
 
   return (
     <FieldDataContext.Provider
-      value={[
+      value={{
         fieldData,
         updateFieldData,
         updateFieldDataNestedObject,
         deleteKeys,
-      ]}
+      }}
     >
       {children}
     </FieldDataContext.Provider>
